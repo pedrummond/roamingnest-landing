@@ -122,7 +122,7 @@
     main {
       display: grid;
       align-content: center;
-      padding: clamp(64px, 12vw, 150px) 0;
+      padding: clamp(32px, min(12vw, 8vh), 150px) 0;
     }
 
     .hero {
@@ -134,7 +134,7 @@
       max-width: 19ch;
       margin: 0;
       font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-      font-size: clamp(2.75rem, 8vw, 6.8rem);
+      font-size: clamp(2.75rem, min(8vw, 11vh), 6.8rem);
       font-weight: 500;
       line-height: 0.98;
       letter-spacing: -0.045em;
@@ -142,7 +142,7 @@
     }
 
     .tagline {
-      margin: clamp(28px, 5vw, 52px) 0 0;
+      margin: clamp(28px, min(5vw, 6vh), 52px) 0 0;
       color: var(--muted);
       font-size: clamp(1rem, 2vw, 1.25rem);
       letter-spacing: 0.02em;
@@ -152,7 +152,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      margin: clamp(42px, 7vw, 76px) 0 0;
+      margin: clamp(42px, min(7vw, 8vh), 76px) 0 0;
       font-size: clamp(1rem, 2.2vw, 1.35rem);
       font-weight: 650;
     }
@@ -289,7 +289,8 @@
       button.addEventListener("click", () => setLanguage(button.dataset.langButton));
     });
 
-    setLanguage("es");
+    const preferredLanguage = navigator.languages?.[0] || navigator.language || "";
+    setLanguage(/^es(?:-|$)/i.test(preferredLanguage) ? "es" : "en");
   </script>
 </body>
 </html>
